@@ -1,237 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Reavolución Ciudadana</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      background: #f4f4f9;
-      color: #333;
+    :root{
+      --primary:#b71c1c;
+      --dark:#333;
+      --muted:#f4f4f9;
+      --white:#fff;
+      --maxw:1100px;
     }
-    header {
-      background: #b71c1c;
-      color: white;
-      padding: 40px;
-      text-align: center;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Arial, Helvetica, sans-serif;
+      background:var(--muted);
+      color:var(--dark);
+      line-height:1.5;
     }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #333;
-      flex-wrap: wrap;
+
+    /* HEADER */
+    header{
+      background:var(--primary);
+      color:var(--white);
+      padding:18px;
     }
-    nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-weight: bold;
+    .header-inner{
+      max-width:var(--maxw);
+      margin:auto;
+      display:flex;
+      align-items:center;
+      gap:18px;
+      padding:6px;
     }
-    nav a:hover {
-      background: #575757;
+    #logo-img{
+      height:72px;
+      width:72px;
+      object-fit:contain;
+      border-radius:8px;
+      background:white;
+      padding:6px;
     }
-    section {
-      padding: 40px;
-      text-align: center;
-      animation: fadeIn 1s ease-in;
+    #svgLogo{ display:none; width:72px; height:72px; }
+    .site-title{
+      display:flex;
+      flex-direction:column;
     }
-    section h2 {
-      color: #b71c1c;
+    .site-title h1{ margin:0; font-size:1.5rem; letter-spacing:0.5px;}
+    .site-title p{ margin:4px 0 0; font-size:0.95rem; opacity:0.95; }
+
+    /* NAV */
+    nav{
+      background:#2a2a2a;
+      padding:10px 0;
     }
-    footer {
-      background: #333;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 20px;
+    nav .nav-inner{ max-width:var(--maxw); margin:auto; text-align:center; }
+    nav a{
+      color:white; text-decoration:none;
+      margin:0 12px; font-weight:700;
     }
-    .boton {
-      display: inline-block;
-      padding: 10px 20px;
-      margin-top: 20px;
-      background: #b71c1c;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
+
+    /* MAIN */
+    main{ max-width:var(--maxw); margin:18px auto; padding:0 18px; }
+
+    .hero{
+      background:white; padding:28px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.06);
+      display:flex; gap:20px; align-items:center; flex-wrap:wrap;
     }
-    .boton:hover {
-      background: #d32f2f;
+    .hero .text{ flex:1; min-width:240px }
+    .hero .cta{ margin-top:12px }
+
+    section{ margin-top:28px }
+    h2{ color:var(--primary); margin-bottom:10px }
+
+    /* LÍDERES */
+    .equipo{ display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:18px; margin-top:12px; }
+    .miembro{
+      background:white; padding:12px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.06);
+      text-align:center;
     }
-    .equipo {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
+    .miembro img{ width:100%; height:180px; object-fit:cover; border-radius:8px; }
+
+    /* NOTICIAS */
+    .noticias-grid{ display:grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:12px; }
+    .card{ background:white; border-radius:10px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    .card img{ width:100%; height:150px; object-fit:cover; display:block; }
+    .card .card-body{ padding:12px; }
+
+    /* CONTACTO */
+    .contact-card{ background:white; padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+    form{ display:flex; flex-direction:column; gap:10px; }
+    input, textarea, button{
+      padding:10px; border-radius:6px; border:1px solid #ccc; font-size:15px;
     }
-    .miembro {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      width: 250px;
-    }
-    .miembro img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    form {
-      max-width: 500px;
-      margin: auto;
-      text-align: left;
-    }
-    form input, form textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    form button {
-      background: #b71c1c;
-      color: white;
-      border: none;
-      padding: 12px;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    form button:hover {
-      background: #d32f2f;
-    }
-    #form-status {
-      margin-top: 15px;
-      font-weight: bold;
-      display: none;
-    }
-    .redes a {
-      margin: 0 10px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .redes a:hover {
-      text-decoration: underline;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    button{ background:var(--primary); color:white; border:none; cursor:pointer; }
+    button:hover{ background:#922; }
+
+    #form-status{ display:none; font-weight:700; margin-top:8px; }
+
+    /* FOOTER */
+    footer{ margin-top:28px; background:#222; color:white; padding:14px; text-align:center; }
+
+    /* responsive tweaks */
+    @media (max-width:600px){
+      .header-inner{padding:8px}
+      .site-title h1{ font-size:1.15rem }
+      #logo-img{ height:56px; width:56px }
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Reavolución Ciudadana</h1>
-    <p>por un pueblo unido</p>
+    <div class="header-inner">
+      <!-- Logo externo (sube logo.png al repo root). Si no existe, el onerror oculta la img y muestra el SVG -->
+      <img id="logo-img" src="logo.png" alt="Logo Reavolución Ciudadana"
+           onerror="this.style.display='none'; document.getElementById('svgLogo').style.display='inline-block'">
+      <!-- SVG fallback (inline) -->
+      <svg id="svgLogo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="100" height="100" rx="12" fill="#fff"/>
+        <path d="M16 62 L40 28 L64 62 Z" fill="#b71c1c" />
+        <circle cx="50" cy="74" r="8" fill="#b71c1c"/>
+      </svg>
+
+      <div class="site-title">
+        <h1>Reavolución Ciudadana</h1>
+        <p>por un pueblo unido</p>
+      </div>
+    </div>
   </header>
 
   <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#quienes">Quiénes Somos</a>
-    <a href="#equipo">Equipo</a>
-    <a href="#noticias">Noticias</a>
-    <a href="#contacto">Contacto</a>
+    <div class="nav-inner">
+      <a href="#inicio">Inicio</a>
+      <a href="#quienes">Quiénes Somos</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#noticias">Noticias</a>
+      <a href="#contacto">Contacto</a>
+    </div>
   </nav>
 
-  <!-- INICIO -->
-  <section id="inicio">
-    <h2>Bienvenidos</h2>
-    <p>Este es el portal oficial de <strong>Reavolución Ciudadana</strong>, un proyecto creado para dar voz a la comunidad y trabajar por un mejor futuro.</p>
-    <a href="#contacto" class="boton">Únete al Movimiento</a>
-  </section>
-
-  <!-- QUIÉNES SOMOS -->
-  <section id="quienes">
-    <h2>Quiénes Somos</h2>
-    <p><strong>Misión:</strong> Impulsar la participación ciudadana para construir una sociedad más justa, solidaria y consciente.</p>
-    <p><strong>Visión:</strong> Ser un referente de unidad, transparencia y transformación social en nuestra región.</p>
-    <p><strong>Objetivos:</strong> Fomentar la organización comunitaria, apoyar la educación y promover la equidad social.</p>
-  </section>
-
-  <!-- EQUIPO -->
-  <section id="equipo">
-    <h2>Nuestro Equipo</h2>
-    <div class="equipo">
-      <div class="miembro">
-        <img src="persona1.jpg" alt="Líder 1">
-        <h3>pepito</h3>
-        <p>lider del movimiento.</p>
+  <main>
+    <!-- HERO -->
+    <div id="inicio" class="hero">
+      <div class="text">
+        <h2>Bienvenidos</h2>
+        <p>Reavolución Ciudadana es un movimiento por la participación activa y la defensa de derechos. Únete y participa en nuestras actividades, foros y campañas locales.</p>
+        <div class="cta">
+          <a href="#contacto" style="display:inline-block;padding:10px 14px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;">Únete</a>
+        </div>
       </div>
-      <div class="miembro">
-        <img src="persona2.jpg" alt="Líder 2">
-        <h3>pepita</h3>
-        <p>Descripción brev</p>
+      <div class="img" style="min-width:220px;">
+        <!-- Imagen hero opcional (subir hero.jpg) -->
+        <img src="hero.jpg" alt="Acción ciudadana" style="width:240px;height:140px;object-fit:cover;border-radius:8px;" onerror="this.style.display='none'">
       </div>
     </div>
-  </section>
 
-  <!-- NOTICIAS -->
-  <section id="noticias">
-    <h2>Noticias y Actualidad</h2>
-    <p>Aquí podrás encontrar las últimas noticias, comunicados y actividades de Reavolución Ciudadana.</p>
-  </section>
+    <!-- QUIENES SOMOS -->
+    <section id="quienes">
+      <h2>Quiénes Somos</h2>
+      <p><strong>Misión:</strong> Impulsar la participación ciudadana para construir una sociedad más justa, solidaria y consciente.</p>
+      <p><strong>Visión:</strong> Ser un referente de unidad, transparencia y transformación social en nuestra región.</p>
+    </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <form id="contact-form" action="https://formspree.io/f/xdkljdqy" method="POST">
-      <label>Nombre</label>
-      <input type="text" name="nombre" required>
-      <label>Email</label>
-      <input type="email" name="email" required>
-      <label>Mensaje</label>
-      <textarea name="mensaje" rows="5" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
-    <p id="form-status">✅ ¡Tu mensaje ha sido enviado con éxito! Gracias por contactarnos.</p>
-  </section>
+    <!-- LÍDERES -->
+    <section id="equipo">
+      <h2>Nuestro Equipo</h2>
+      <div class="equipo">
+        <div class="miembro">
+          <img src="lider1.jpg" alt="Líder 1" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+imagen'">
+          <h3>Nombre del Líder 1</h3>
+          <p>Coordinador regional — Responsable de coordinación de voluntariado y campañas.</p>
+        </div>
+        <div class="miembro">
+          <img src="lider2.jpg" alt="Líder 2" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+imagen'">
+          <h3>Nombre del Líder 2</h3>
+          <p>Encargado de comunicación — Manejo de redes y relaciones públicas.</p>
+        </div>
+        <div class="miembro">
+          <img src="lider3.jpg" alt="Líder 3" onerror="this.src='https://via.placeholder.com/400x300?text=Sin+imagen'">
+          <h3>Nombre del Líder 3</h3>
+          <p>Responsable de proyectos — Diseño y seguimiento de iniciativas comunitarias.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTICIAS -->
+    <section id="noticias">
+      <h2>Noticias y Actualidad</h2>
+      <div class="noticias-grid">
+        <div class="card">
+          <img src="noticia1.jpg" alt="Noticia 1" onerror="this.src='https://via.placeholder.com/600x400?text=Noticia'">
+          <div class="card-body">
+            <h3>Campaña de limpieza comunitaria</h3>
+            <p>Realizamos una jornada de limpieza en el barrio el sábado pasado con gran participación ciudadana.</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="noticia2.jpg" alt="Noticia 2" onerror="this.src='https://via.placeholder.com/600x400?text=Noticia'">
+          <div class="card-body">
+            <h3>Foro sobre participación juvenil</h3>
+            <p>Un foro abierto para jóvenes interesados en participar en procesos locales de toma de decisiones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <div class="contact-card">
+        <p>Déjanos tu mensaje y nos pondremos en contacto contigo.</p>
+
+        <form id="contact-form" action="https://formspree.io/f/xdkljdqy" method="POST">
+          <input type="text" name="name" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Correo" required>
+          <textarea name="message" rows="5" placeholder="Mensaje" required></textarea>
+          <button type="submit">Enviar</button>
+        </form>
+
+        <div id="form-status"></div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 Reavolución Ciudadana - Todos los derechos reservados</p>
-    <div class="redes">
-      <a href="https://www.facebook.com/share/p/14LSpXk4XEU/">Facebook</a>
-      <a href="https://instagram.com" target="_blank">Instagram</a>
-      <a href="https://whatsapp.com" ">WhatsApp</a>
-    </div>
+    <p>© 2025 Reavolución Ciudadana — Síguenos en redes: 
+      <a href="https://facebook.com" target="_blank" style="color:#fff;text-decoration:underline;margin-left:8px;">Facebook</a>
+      <a href="https://instagram.com" target="_blank" style="color:#fff;text-decoration:underline;margin-left:8px;">Instagram</a>
+    </p>
   </footer>
 
   <script>
-    // Animación de scroll
-    const secciones = document.querySelectorAll("section");
-    const mostrarSeccion = () => {
-      secciones.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.style.opacity = 1;
-          sec.style.transform = "translateY(0)";
-        }
-      });
-    };
-    window.addEventListener("scroll", mostrarSeccion);
-    mostrarSeccion();
+    // Formspree AJAX submit (muestra mensaje en la misma página)
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
 
-    // Formulario con Formspree
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-
-    form.addEventListener("submit", async (event) => {
-      event.preventDefault();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      status.style.display = 'block';
+      status.textContent = 'Enviando...';
       const data = new FormData(form);
-      const response = await fetch(form.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
 
-      if (response.ok) {
-        form.reset();
-        status.style.display = "block";
-        status.style.color = "green";
-        status.textContent = "✅ ¡Tu mensaje ha sido enviado con éxito! Gracias por contactarnos.";
-      } else {
-        status.style.display = "block";
-        status.style.color = "red";
-        status.textContent = "❌ Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo.";
+      try {
+        const res = await fetch(form.action, {
+          method: form.method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          form.reset();
+          status.style.color = 'green';
+          status.textContent = '✅ Tu mensaje ha sido enviado con éxito. ¡Gracias!';
+        } else {
+          status.style.color = 'red';
+          status.textContent = '❌ Ocurrió un error al enviar el mensaje. Intenta de nuevo.';
+        }
+      } catch (err) {
+        status.style.color = 'red';
+        status.textContent = '❌ Error de red. Revisa tu conexión e inténtalo otra vez.';
       }
     });
   </script>

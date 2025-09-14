@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reavolución Ciudadana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f9;
+      color: #333;
+    }
+    header {
+      background: #b71c1c;
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #333;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      padding: 14px 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      background: #575757;
+    }
+    section {
+      padding: 40px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+    section h2 {
+      color: #b71c1c;
+    }
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+    .boton {
+      display: inline-block;
+      padding: 10px 20px;
+      margin-top: 20px;
+      background: #b71c1c;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+    .boton:hover {
+      background: #d32f2f;
+    }
+    .equipo {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .miembro {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 250px;
+    }
+    .miembro img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    form {
+      max-width: 500px;
+      margin: auto;
+      text-align: left;
+    }
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    form button {
+      background: #b71c1c;
+      color: white;
+      border: none;
+      padding: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    form button:hover {
+      background: #d32f2f;
+    }
+    #form-status {
+      margin-top: 15px;
+      font-weight: bold;
+      display: none;
+    }
+    .redes a {
+      margin: 0 10px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .redes a:hover {
+      text-decoration: underline;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Reavolución Ciudadana</h1>
+    <p>por un pueblo unido</p>
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#quienes">Quiénes Somos</a>
+    <a href="#equipo">Equipo</a>
+    <a href="#noticias">Noticias</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <!-- INICIO -->
+  <section id="inicio">
+    <h2>Bienvenidos</h2>
+    <p>Este es el portal oficial de <strong>Reavolución Ciudadana</strong>, un proyecto creado para dar voz a la comunidad y trabajar por un mejor futuro.</p>
+    <a href="#contacto" class="boton">Únete al Movimiento</a>
+  </section>
+
+  <!-- QUIÉNES SOMOS -->
+  <section id="quienes">
+    <h2>Quiénes Somos</h2>
+    <p><strong>Misión:</strong> Impulsar la participación ciudadana para construir una sociedad más justa, solidaria y consciente.</p>
+    <p><strong>Visión:</strong> Ser un referente de unidad, transparencia y transformación social en nuestra región.</p>
+    <p><strong>Objetivos:</strong> Fomentar la organización comunitaria, apoyar la educación y promover la equidad social.</p>
+  </section>
+
+  <!-- EQUIPO -->
+  <section id="equipo">
+    <h2>Nuestro Equipo</h2>
+    <div class="equipo">
+      <div class="miembro">
+        <img src="persona1.jpg" alt="Líder 1">
+        <h3>pepito</h3>
+        <p>lider del movimiento.</p>
+      </div>
+      <div class="miembro">
+        <img src="persona2.jpg" alt="Líder 2">
+        <h3>pepita</h3>
+        <p>Descripción brev</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTICIAS -->
+  <section id="noticias">
+    <h2>Noticias y Actualidad</h2>
+    <p>Aquí podrás encontrar las últimas noticias, comunicados y actividades de Reavolución Ciudadana.</p>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <form id="contact-form" action="https://formspree.io/f/xdkljdqy" method="POST">
+      <label>Nombre</label>
+      <input type="text" name="nombre" required>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Mensaje</label>
+      <textarea name="mensaje" rows="5" required></textarea>
+      <button type="submit">Enviar</button>
+    </form>
+    <p id="form-status">✅ ¡Tu mensaje ha sido enviado con éxito! Gracias por contactarnos.</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Reavolución Ciudadana - Todos los derechos reservados</p>
+    <div class="redes">
+      <a href="https://www.facebook.com/share/p/14LSpXk4XEU/">Facebook</a>
+      <a href="https://instagram.com" target="_blank">Instagram</a>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+    </div>
+  </footer>
+
+  <script>
+    // Animación de scroll
+    const secciones = document.querySelectorAll("section");
+    const mostrarSeccion = () => {
+      secciones.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.style.opacity = 1;
+          sec.style.transform = "translateY(0)";
+        }
+      });
+    };
+    window.addEventListener("scroll", mostrarSeccion);
+    mostrarSeccion();
+
+    // Formulario con Formspree
+    const form = document.getElementById("contact-form");
+    const status = document.getElementById("form-status");
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const data = new FormData(form);
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.reset();
+        status.style.display = "block";
+        status.style.color = "green";
+        status.textContent = "✅ ¡Tu mensaje ha sido enviado con éxito! Gracias por contactarnos.";
+      } else {
+        status.style.display = "block";
+        status.style.color = "red";
+        status.textContent = "❌ Ocurrió un error al enviar tu mensaje. Inténtalo de nuevo.";
+      }
+    });
+  </script>
+</body>
+</html>
